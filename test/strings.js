@@ -168,4 +168,10 @@ $(document).ready(function() {
     equals(_(5).unescapeHTML(), '5');
     equals(_(undefined).unescapeHTML(), '');
   });
+
+  test('String: toFunction', function() {
+    equals(_('length').toFunction()('123'), 3);
+    equals(_('toUpperCase()').toFunction()('asd'), 'ASD');
+    equals(_('constructor').toFunction()('asd'), String);
+  });
 });
