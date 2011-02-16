@@ -189,17 +189,17 @@ This function convert string to anonymous function, for example:
     _('toUpperCase()').toFunction()('asd')
     => 'ASD'
 
-    Instead of:
+  Instead of:
 
     _(['joe', 'john', 'darel']).map(function(n) {return n.length})
     => [3, 4, 5]
 
-    You can use:
+  You can use:
 
     _(['joe', 'john', 'darel']).map(_('length').toFunction())
     => [3, 4, 5]
 
-    or use 'proc' alias:
+  or use 'proc' alias:
 
     _(['joe', 'john', 'darel']).map(_('length').proc())
     => [3, 4, 5]
