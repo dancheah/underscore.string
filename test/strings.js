@@ -172,6 +172,7 @@ $(document).ready(function() {
   test('String: toFunction', function() {
     equals(_('length').toFunction()('123'), 3);
     equals(_('toUpperCase()').toFunction()('asd'), 'ASD');
-    equals(_('constructor').toFunction()('asd'), String);
+    equals(_('constructor').proc()('asd'), String);
+    equals(_(['joe', 'john', 'darel']).map(_('length').toFunction()).join(','), '3,4,5')
   });
 });

@@ -176,6 +176,33 @@ Left trim. Similar to trim, but only for right side.
 
     _('Hello world').truncate(5)
     => 'Hello...'
+**toFunction** _.toFunction(string)
+
+This function convert string to anonymous function, for example:
+
+    _('length').toFunction()
+    => function() { return arguments[0].length }
+
+    _('length').toFunction()('123')
+    => 3
+
+    _('toUpperCase()').toFunction()('asd')
+    => 'ASD'
+
+    Instead of:
+
+    _(['joe', 'john', 'darel']).map(function(n) {return n.length})
+    => [3, 4, 5]
+
+    You can use:
+
+    _(['joe', 'john', 'darel']).map(_('length').toFunction())
+    => [3, 4, 5]
+
+    or use 'proc' alias:
+
+    _(['joe', 'john', 'darel']).map(_('length').proc())
+    => [3, 4, 5]
 
 **sprintf** _.sprintf(string format, *arguments)
 
