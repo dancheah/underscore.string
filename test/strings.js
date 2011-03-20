@@ -200,7 +200,7 @@ $(document).ready(function() {
   test('String: eachChar', function(){
     result = [];
     _('hello').eachChar(function(c){ result.push(c + '+') });
-    equals(result, 'h+e+l+l+o+');
+    equals(result.join(''), 'h+e+l+l+o+');
   });
 
   test('String: eachLine', function(){
@@ -208,15 +208,15 @@ $(document).ready(function() {
     _('hello\nworld').eachLine(function(c){
       result.push(c + '+');
     });
-    equals(result, 'hello+world');
+    equals(result.join(''), 'hello+world+');
   });
 
   test('String: eachWord', function(){
     result = [];
-    _('hello world').eachLine(function(c){
+    _('hello world').eachWord(function(c){
       result.push(c + '+');
     }, ' ');
-    equals(result, 'hello+world');
+    equals(result.join(''), 'hello+world+');
   });
 
 });
