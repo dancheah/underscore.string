@@ -163,4 +163,60 @@ $(document).ready(function() {
     equals(_(5).unescapeHTML(), '5');
     equals(_(undefined).unescapeHTML(), '');
   });
+
+  test('String: words', function() {
+    equals(_("I love you!").words().length, 3);
+    equals(_("I_love_you!").words('_').length, 3);
+    equals(_("I-love-you!").words(/-/).length, 3);
+  });
+
+  test('String: chars', function() {
+    equals(_("Hello").chars().length, 5);
+  });
+
+  test('String: lines', function() {
+    equals(_("Hello\nWorld").lines().length, 2);
+    equals(_("Hello World").lines().length, 1);
+  });
+
+  test('String: center', function(){
+    equals(_('hello').center(4), 'hello');
+    equals(_('hello').center(20), '        hello       ');
+    equals(_('hello').center(20, '123'), "1231231hello12312312");
+  });
+
+  test('String: ljust', function(){
+    equals(_('hello').ljust(4), 'hello');
+    equals(_('hello').ljust(20), "hello               ");
+    equals(_('hello').ljust(20, '123'), "hello123412341234123");
+  });
+
+  test('String: rjust', function(){
+    equals(_('hello').rjist(4), 'hello');
+    equals(_('hello').rjust(20), "               hello");
+    equals(_('hello').rjust(20, '123'), "123412341234123hello");
+  });
+
+  test('String: eachChar', function(){
+    result = [];
+    _('hello').eachChar(function(c){ result.push(c + '+') });
+    equals(result, 'h+e+l+l+o+');
+  });
+
+  test('String: eachLine', function(){
+    result = [];
+    _('hello\nworld').eachLine(function(c){
+      result.push(c + '+');
+    });
+    equals(result, 'hello+world');
+  });
+
+  test('String: eachWord', function(){
+    result = [];
+    _('hello world').eachLine(function(c){
+      result.push(c + '+');
+    }, ' ');
+    equals(result, 'hello+world');
+  });
+
 });
