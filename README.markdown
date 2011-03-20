@@ -56,6 +56,11 @@ Compress some whitespaces to one.
     _.clean(" foo    bar   ")
     => 'foo bar'
 
+**chars** _.chars(str)
+
+    _.chars('Hello')
+    => ['H','e','l','l','o']
+
 **includes** _.includes(string, substring)
 
 Tests if string contains a substring.
@@ -93,6 +98,18 @@ Joins strings together with given separator
 
     _.join(" ", "foo", "bar")
     => "foo bar"
+
+**lines** _.lines(str)
+
+    _.lines("Hello\nWorld")
+    => ["Hello", "World"]
+
+**reverse**
+
+This functions has been removed, because this function override underscore.js 'reverse'.
+But now you can do that:
+
+    _("foobar").chars().reverse().join('')
 
 **splice**  _.splice(string, index, howmany, substring)
 
@@ -168,6 +185,19 @@ Left trim. Similar to trim, but only for right side.
     _('Hello world').truncate(5)
     => 'Hello...'
 
+**words** _.words(str, delimiter=" ")
+
+Split string by delimiter (String or RegExp), ' ' by default.
+
+    _.words("I love you")
+    => ["I","love","you"]
+
+    _.words("I_love_you", "_")
+    => ["I","love","you"]
+
+    _.words("I-love-you", /-/)
+    => ["I","love","you"]
+
 **sprintf** _.sprintf(string format, *arguments)
 
 C like string formatting.
@@ -179,11 +209,31 @@ For more detailed documentation, see the [original page][o].
     _.sprintf("%.1f", 1.17)
     "1.2"
 
-## TODO ##
+## Roadmap ##
 
-* Create integration test suite with underscore.js
-* Resolve conflict with 'contains'
-* Create functions: lines, chars, words
+* Resolve problem with function names crossing between libraries (include, contains and etc).
 
 Any suggestions or bug reports are welcome. Just email me or more preferably open an issue.
 
+## Changelog ##
+
+### 1.1.2 ###
+
+* Created functions: lines, chars, words functions
+
+### 1.0.2 ###
+
+* Created integration test suite with underscore.js 1.1.4 (now it's absolutely compatible)
+* Removed 'reverse' function, because this function override underscore.js 'reverse'
+
+## Contributors list##
+
+*  Esa-Matti Suuronen <esa-matti@suuronen.org> (http://esa-matti.suuronen.org/),
+*  Edward Tsech <edtsech@gmail.com>,
+*  Sasha Koss <kossnocorp@gmail.com> (http://koss.nocorp.me/),
+*  Vladimir Dronnikov <dronnikov@gmail.com>
+
+## Licence ##
+
+[MIT Licence][mit]
+[mit]: http://www.opensource.org/licenses/mit-license.php
