@@ -31,5 +31,6 @@
   },
   "licenses" : [
     { "type" : "MIT" }
-  ]
+  ],
+  "main": "lib/underscore.string.js"
 }
